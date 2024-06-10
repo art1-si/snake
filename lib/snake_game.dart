@@ -1,20 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:snake/presentation/navigation/router.dart';
 
-class SnakeGame extends StatelessWidget {
-  const SnakeGame({super.key});
+class SnakeGameApp extends StatelessWidget {
+  const SnakeGameApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Snake Game',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Snake Game'),
-        ),
-        body: const Center(
-          child: Text('Snake Game'),
-        ),
-      ),
+    return MaterialApp.router(
+      routerConfig: AppRouter.router,
     );
   }
 }

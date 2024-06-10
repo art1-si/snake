@@ -8,7 +8,7 @@ void main() async {
   await runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized();
-      runApp(const SnakeGame());
+      runApp(const SnakeGameApp());
     },
     (error, stackTrace) => Logger.error(error.toString(), stackTrace),
   );
