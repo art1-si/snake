@@ -2,29 +2,30 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/movement_behaviour.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/game_controller/direction_controls.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
 
 sealed class Sprite {
-  const Sprite({
+  Sprite({
     required List<Pixel> pixels,
-  }) : _pixels = pixels;
-
-  final List<Pixel> _pixels;
-
-  List<Pixel> get pixels => _pixels;
-}
-
-class UnmovableSprite extends Sprite {
-  const UnmovableSprite({required super.pixels});
-}
-
-sealed class MovableSprite extends Sprite {
-  MovableSprite({required super.pixels, required this.movementBehaviour}) : pixelsNotifier = ValueNotifier(pixels);
+  }) : pixelsNotifier = ValueNotifier(pixels);
 
   final ValueNotifier<List<Pixel>> pixelsNotifier;
 
-  @override
   List<Pixel> get pixels => pixelsNotifier.value;
+
+  void respawn({
+    required List<Pixel> unavailablePixelOffsets,
+  }) {
+    throw UnimplementedError();
+  }
+}
+
+class UnmovableSprite extends Sprite {
+  UnmovableSprite({required super.pixels});
+}
+
+sealed class MovableSprite extends Sprite {
+  MovableSprite({required super.pixels, required this.movementBehaviour});
 
   final MovementBehaviour movementBehaviour;
 

@@ -15,10 +15,11 @@ class SnakeGame extends GameWidget {
 
   @override
   void onCollisionWithOtherSprite(Sprite sprite1, Sprite sprite2) {
-    if (sprite1 == sprite2) {
-      //TODO(Artur):handle collision on itself
-      return;
+    if (sprite1 is SnakeSprite && sprite2 is AppleSprite) {
+      sprite1.grow();
+      sprite2.respawn(unavailablePixelOffsets: sprite1.pixels);
     }
+    return;
   }
 
   @override
@@ -33,9 +34,10 @@ class SnakeGame extends GameWidget {
 
   @override
   List<Sprite> spriteBuilder() {
+    final snakeSprite = SnakeSprite.fromLength(4);
     return [
-      SnakeSprite.fromLength(4),
-      AppleSprite.random(pixelDensity: pixelDensity),
+      snakeSprite,
+      AppleSprite.random(pixelDensity: pixelDensity, unavailablePixelOffsets: snakeSprite.pixels),
     ];
   }
 }

@@ -6,15 +6,21 @@ import 'package:snake/presentation/screens/snake_game/game_engine/models/sprite.
 import 'package:snake/presentation/theme/app_colors.dart';
 
 class AppleSprite extends UnmovableSprite {
-  const AppleSprite({required super.pixels});
+  AppleSprite({required super.pixels, required this.pixelDensity});
 
-  factory AppleSprite.random({required CanvasPixelDensity pixelDensity}) {
+  final CanvasPixelDensity pixelDensity;
+
+  factory AppleSprite.random({
+    required CanvasPixelDensity pixelDensity,
+    required List<Pixel> unavailablePixelOffsets,
+  }) {
     final density = pixelDensity.pixelDensity;
     final random = Random();
     final randomX = random.nextInt(density);
     final randomY = random.nextInt(density);
 
     return AppleSprite(
+      pixelDensity: pixelDensity,
       pixels: [
         Pixel(
           offset: PixelOffset(x: randomX, y: randomY),
@@ -22,5 +28,21 @@ class AppleSprite extends UnmovableSprite {
         ),
       ],
     );
+  }
+  @override
+  void respawn({
+    required List<Pixel> unavailablePixelOffsets,
+  }) {
+    final density = pixelDensity.pixelDensity;
+    final random = Random();
+    final randomX = random.nextInt(density);
+    final randomY = random.nextInt(density);
+
+    pixelsNotifier.value = [
+      Pixel(
+        offset: PixelOffset(x: randomX, y: randomY),
+        color: AppColors.primary,
+      ),
+    ];
   }
 }

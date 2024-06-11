@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/difficulty_level/bloc/difficulty_level_selector_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/game_controller/direction_controls.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/game_display/game_display.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/game_display/snake_game.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
 
@@ -38,7 +38,7 @@ class _SneakGameScreenState extends State<SneakGameScreen> {
               ),
             ),
           ),
-          DirectionControls(
+          DirectionControlCluster(
             directionController: directionController,
           ),
         ],

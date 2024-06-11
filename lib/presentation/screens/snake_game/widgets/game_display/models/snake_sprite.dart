@@ -17,4 +17,11 @@ class SnakeSprite extends OnTickMovableSprite {
       ),
     );
   }
+
+  void grow() {
+    final state = pixelsNotifier.value;
+    final lastPixel = state.last;
+    final newPixel = lastPixel.copyWith();
+    pixelsNotifier.value = [...state, newPixel];
+  }
 }

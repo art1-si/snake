@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:snake/presentation/screens/snake_game/widgets/game_controller/direction_controls.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
 
 class Pixel {
   Pixel({required this.offset, required this.color});

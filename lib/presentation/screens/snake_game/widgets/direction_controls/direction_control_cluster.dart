@@ -11,16 +11,15 @@ enum Direction {
   bool get isHorizontal => this == Direction.left || this == Direction.right;
 }
 
-class DirectionControls extends StatelessWidget {
-  const DirectionControls({super.key, required this.directionController});
+class DirectionControlCluster extends StatelessWidget {
+  const DirectionControlCluster({super.key, required this.directionController});
 
   final DirectionController directionController;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 250,
-      color: Colors.black,
       child: Center(
         child: SizedBox.square(
           dimension: 250,
@@ -97,6 +96,11 @@ class DirectionControlButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(disabled ? Colors.white38 : Colors.white),
+        padding: MaterialStateProperty.all(const EdgeInsets.all(24)),
+        shape: MaterialStateProperty.all(const CircleBorder()),
+      ),
       onPressed: disabled ? null : onPressed,
       icon: Icon(
         switch (direction) {
@@ -105,7 +109,6 @@ class DirectionControlButton extends StatelessWidget {
           Direction.left => Icons.arrow_back,
           Direction.right => Icons.arrow_forward,
         },
-        color: Colors.black,
       ),
     );
   }
