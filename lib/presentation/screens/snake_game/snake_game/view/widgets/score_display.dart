@@ -15,7 +15,7 @@ class _ScoreDisplayState extends State<ScoreDisplay> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 125,
+      height: 80,
       child: BlocBuilder<GameplayBloc, GameplayState>(
         builder: (context, state) {
           switch (state) {
@@ -51,7 +51,7 @@ class _ScoreDisplayState extends State<ScoreDisplay> {
                       key: Key('${state.score}'),
                       '${state.score}',
                       style: const TextStyle(
-                        fontSize: 64,
+                        fontSize: 36,
                         fontWeight: FontWeight.bold,
                         color: AppColors.primary,
                       ),

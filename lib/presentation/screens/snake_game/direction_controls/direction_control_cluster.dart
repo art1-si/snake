@@ -19,7 +19,7 @@ class DirectionControlCluster extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
+      height: 200,
       child: Center(
         child: SizedBox.square(
           dimension: 250,
