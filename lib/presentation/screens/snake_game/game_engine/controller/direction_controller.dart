@@ -13,6 +13,12 @@ class DirectionController {
   Direction get direction => directionNotifier.value;
 
   void changeDirection(Direction direction) {
+    if (direction.isHorizontal == directionNotifier.value.isHorizontal) {
+      return;
+    }
+    if (direction.isVertical == directionNotifier.value.isVertical) {
+      return;
+    }
     directionNotifier.value = direction;
   }
 
