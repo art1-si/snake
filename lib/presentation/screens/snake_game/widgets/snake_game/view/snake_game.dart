@@ -1,14 +1,15 @@
 import 'package:snake/presentation/screens/snake_game/difficulty_level/model/difficulty_level.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/sprite.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/view/game_widget.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/game_display/models/apple_sprite.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/game_display/models/snake_sprite.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/snake_game/models/apple_sprite.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/snake_game/models/snake_sprite.dart';
 
 class SnakeGame extends GameWidget {
   SnakeGame({
     super.key,
     required DifficultyLevel difficultyLevel,
     required super.directionController,
+    required super.gameplayController,
   }) : super(
           pixelDensity: difficultyLevel.pixelDensity,
         );
@@ -24,12 +25,12 @@ class SnakeGame extends GameWidget {
 
   @override
   void onCollisionWithItself(Sprite sprite) {
-    // TODO: implement onCollisionWithItself
+    gameplayController.endGame();
   }
 
   @override
   void onCollisionWithWall(Sprite sprite) {
-    // TODO: implement onCollisionWithWall
+    gameplayController.endGame();
   }
 
   @override

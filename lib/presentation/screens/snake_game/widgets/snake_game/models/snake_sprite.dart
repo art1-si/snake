@@ -14,7 +14,7 @@ class SnakeSprite extends OnTickMovableSprite {
           offset: PixelOffset(x: 0, y: index),
           color: AppColors.onBackground,
         ),
-      ),
+      ).reversed.toList(),
     );
   }
 

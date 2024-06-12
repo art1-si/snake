@@ -29,6 +29,7 @@ class AppleSprite extends UnmovableSprite {
       ],
     );
   }
+
   @override
   void respawn({
     required List<Pixel> unavailablePixelOffsets,

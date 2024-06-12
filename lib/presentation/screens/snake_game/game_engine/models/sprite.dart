@@ -3,15 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/movement_behaviour.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
+import 'package:snake/tools/logger/logger.dart';
 
 sealed class Sprite {
   Sprite({
     required List<Pixel> pixels,
-  }) : pixelsNotifier = ValueNotifier(pixels);
+  })  : pixelsNotifier = ValueNotifier(pixels),
+        _initialPixels = pixels;
+
+  final List<Pixel> _initialPixels;
 
   final ValueNotifier<List<Pixel>> pixelsNotifier;
 
   List<Pixel> get pixels => pixelsNotifier.value;
+
+  void reset() {
+    pixelsNotifier.value = _initialPixels;
+  }
 
   void respawn({
     required List<Pixel> unavailablePixelOffsets,
@@ -50,7 +58,7 @@ sealed class MovableSprite extends Sprite {
 
       return state[index - 1];
     }).toList();
-
+    Logger.debug('newPixels: $newPixels');
     pixelsNotifier.value = newPixels;
   }
 

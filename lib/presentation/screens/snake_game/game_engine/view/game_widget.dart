@@ -1,7 +1,6 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
+import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/canvas_pixel_density.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/view/game_canvas.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/sprite.dart';
@@ -11,11 +10,14 @@ abstract class GameWidget extends StatefulWidget {
     super.key,
     required this.pixelDensity,
     required this.directionController,
+    required this.gameplayController,
   });
 
   final DirectionController directionController;
 
   final CanvasPixelDensity pixelDensity;
+
+  final GameplayController gameplayController;
 
   void onCollisionWithOtherSprite(Sprite sprite1, Sprite sprite2);
 
@@ -30,21 +32,34 @@ abstract class GameWidget extends StatefulWidget {
 }
 
 class _GameWidgetState extends State<GameWidget> {
-  late final Timer _timer;
   late final List<Sprite> _sprites = widget.spriteBuilder();
 
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(milliseconds: 250), (_) {
-      onTick();
-    });
+    widget.gameplayController.addListener(gameplayControllerListener);
   }
 
   @override
   void dispose() {
-    _timer.cancel();
+    widget.gameplayController.removeListener(gameplayControllerListener);
     super.dispose();
+  }
+
+  void gameplayControllerListener(GameplayEvents event) {
+    if (event is TickerEvent) {
+      onTick();
+    }
+    if (event is StartGame) {
+      resetGameplay();
+    }
+  }
+
+  void resetGameplay() {
+    widget.directionController.reset();
+    for (var element in _sprites) {
+      element.reset();
+    }
   }
 
   void onTick() {

@@ -2,13 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
 
 class DirectionController {
-  DirectionController();
+  DirectionController({
+    Direction initialDirection = Direction.down,
+  }) : _initialDirection = initialDirection;
 
-  final directionNotifier = ValueNotifier(Direction.down);
+  final Direction _initialDirection;
+
+  late final directionNotifier = ValueNotifier(_initialDirection);
 
   Direction get direction => directionNotifier.value;
 
   void changeDirection(Direction direction) {
     directionNotifier.value = direction;
+  }
+
+  void reset() {
+    directionNotifier.value = _initialDirection;
   }
 }
