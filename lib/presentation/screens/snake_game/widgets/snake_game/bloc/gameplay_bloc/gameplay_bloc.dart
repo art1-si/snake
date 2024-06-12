@@ -37,7 +37,7 @@ class GameplayBloc extends Bloc<GameplayEvent, GameplayState> {
   void _onAppleEaten(AppleEaten event, Emitter<GameplayState> emit) {
     if (state is GameInProgress) {
       final currentScore = (state as GameInProgress).score;
-      emit(GameInProgress(score: currentScore + 1));
+      emit(GameInProgress(score: currentScore + event.difficultyMultiplier));
     }
   }
 }

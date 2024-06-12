@@ -21,5 +21,9 @@ final class GameEnded extends GameplayEvent {
 }
 
 final class AppleEaten extends GameplayEvent {
-  const AppleEaten();
+  const AppleEaten({
+    required this.difficultyMultiplier,
+  });
+
+  final int difficultyMultiplier;
 }

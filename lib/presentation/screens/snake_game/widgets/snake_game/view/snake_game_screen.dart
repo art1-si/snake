@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/snake_game/extension/difficulty_level_score_multiplier_extension.dart';
+import 'package:snake/presentation/screens/snake_game/widgets/snake_game/extension/difficulty_level_ticker_speed_extension.dart';
 import 'package:snake/presentation/shared/difficulty_level/bloc/difficulty_level_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
@@ -10,22 +12,8 @@ import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/wi
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/snake_game.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/widgets/gameplay_control_overlay.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/widgets/score_display.dart';
-import 'package:snake/presentation/shared/difficulty_level/model/difficulty_level.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
-
-extension DifficultyLevelTickerSpeed on DifficultyLevel {
-  Duration get tickerSpeed {
-    switch (this) {
-      case DifficultyLevel.easy:
-        return const Duration(milliseconds: 500);
-      case DifficultyLevel.medium:
-        return const Duration(milliseconds: 250);
-      case DifficultyLevel.hard:
-        return const Duration(milliseconds: 100);
-    }
-  }
-}
 
 class SneakGameScreen extends StatefulWidget {
   const SneakGameScreen._({super.key});
@@ -84,7 +72,11 @@ class _SneakGameScreenState extends State<SneakGameScreen> {
                   directionController: directionController,
                   gameplayController: gameplayController,
                   onAppleEaten: () {
-                    context.read<GameplayBloc>().add(const AppleEaten());
+                    context.read<GameplayBloc>().add(
+                          AppleEaten(
+                            difficultyMultiplier: difficultyLevel.difficultyLevel.scoreMultiplier,
+                          ),
+                        );
                   },
                 ),
               ),
