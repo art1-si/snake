@@ -12,9 +12,11 @@ run-tests: ## Runs the tests
 	flutter test test/subjects/**/*_tests.dart --coverage --coverage-path="test/coverage/lcov.info"
 	genhtml test/coverage/lcov.info -o test/coverage/html
 
-
-
 run: ## Runs.
 	flutter run 
 
+encrypt: ## Encrypts the secrets
+	./security/vault.sh encrypt
 
+decrypt: ## Decrypts the secrets
+	./security/vault.sh decrypt
