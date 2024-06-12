@@ -10,8 +10,22 @@ import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/wi
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/snake_game.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/widgets/gameplay_control_overlay.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/widgets/score_display.dart';
+import 'package:snake/presentation/shared/difficulty_level/model/difficulty_level.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
+
+extension DifficultyLevelTickerSpeed on DifficultyLevel {
+  Duration get tickerSpeed {
+    switch (this) {
+      case DifficultyLevel.easy:
+        return const Duration(milliseconds: 500);
+      case DifficultyLevel.medium:
+        return const Duration(milliseconds: 250);
+      case DifficultyLevel.hard:
+        return const Duration(milliseconds: 100);
+    }
+  }
+}
 
 class SneakGameScreen extends StatefulWidget {
   const SneakGameScreen._({super.key});
@@ -31,9 +45,11 @@ class SneakGameScreen extends StatefulWidget {
 
 class _SneakGameScreenState extends State<SneakGameScreen> {
   final directionController = DirectionController();
-  final gameplayController = GameplayController();
+  late final gameplayController =
+      GameplayController(tickerSpeed: context.read<DifficultyLevelBloc>().state.difficultyLevel.tickerSpeed);
   @override
   Widget build(BuildContext context) {
+    final difficultyLevel = context.watch<DifficultyLevelBloc>().state;
     return GameplayControllerListener(
       gameplayController: gameplayController,
       child: Scaffold(
@@ -64,7 +80,7 @@ class _SneakGameScreenState extends State<SneakGameScreen> {
             Expanded(
               child: Center(
                 child: SnakeGame(
-                  difficultyLevel: DifficultyLevelState.easy().difficultyLevel,
+                  difficultyLevel: difficultyLevel.difficultyLevel,
                   directionController: directionController,
                   gameplayController: gameplayController,
                   onAppleEaten: () {

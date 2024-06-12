@@ -25,7 +25,12 @@ class TickerEvent extends GameplayEvents {
 }
 
 class GameplayController with ListenableEvent<GameplayEvents> {
-  GameplayController();
+  GameplayController({
+    this.tickerSpeed = const Duration(milliseconds: 250),
+  });
+
+  final Duration tickerSpeed;
+
   Timer? _timer;
 
   bool get isGameRunning => _timer != null;
@@ -35,7 +40,7 @@ class GameplayController with ListenableEvent<GameplayEvents> {
       _timer!.cancel();
     }
     notify(const StartGame());
-    _timer = Timer.periodic(const Duration(milliseconds: 250), (_) {
+    _timer = Timer.periodic(tickerSpeed, (_) {
       notify(const TickerEvent());
     });
   }
