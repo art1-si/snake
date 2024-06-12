@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/movement_behaviour.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
-import 'package:snake/tools/logger/logger.dart';
 
 sealed class Sprite {
   Sprite({
@@ -58,7 +57,6 @@ sealed class MovableSprite extends Sprite {
 
       return state[index - 1];
     }).toList();
-    Logger.debug('newPixels: $newPixels');
     pixelsNotifier.value = newPixels;
   }
 

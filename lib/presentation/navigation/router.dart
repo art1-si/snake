@@ -39,7 +39,7 @@ class AppRouter {
       NavigationRoute.home => const HomeScreen(),
       NavigationRoute.settings => const SettingsScreen(),
       NavigationRoute.leaderboard => const LeaderboardScreen(),
-      NavigationRoute.snakeGame => const SneakGameScreen(),
+      NavigationRoute.snakeGame => SneakGameScreen.create(),
     };
   }
 }
