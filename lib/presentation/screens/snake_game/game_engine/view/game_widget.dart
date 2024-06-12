@@ -66,7 +66,8 @@ class _GameWidgetState extends State<GameWidget> {
   void onTick() {
     for (var element in _sprites) {
       if (element is MovableSprite) {
-        element.move(widget.directionController.direction);
+        element.move(widget.directionController.direction.direction);
+        widget.directionController.direction.consume();
       }
     }
     checkForCollision();

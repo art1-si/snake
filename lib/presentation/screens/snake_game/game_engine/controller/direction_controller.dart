@@ -1,25 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/direction_controls/direction_control_cluster.dart';
 
+class ConsumableDirection {
+  ConsumableDirection(this.direction);
+
+  void consume() {
+    if (_consumed) {
+      return;
+    }
+    _consumed = true;
+  }
+
+  final Direction direction;
+  bool _consumed = false;
+
+  bool get isConsumed => _consumed;
+}
+
 class DirectionController {
   DirectionController({
     Direction initialDirection = Direction.down,
-  }) : _initialDirection = initialDirection;
+  }) : _initialDirection = ConsumableDirection(initialDirection);
 
-  final Direction _initialDirection;
+  final ConsumableDirection _initialDirection;
 
   late final directionNotifier = ValueNotifier(_initialDirection);
 
-  Direction get direction => directionNotifier.value;
+  ConsumableDirection get direction => directionNotifier.value;
 
-  void changeDirection(Direction direction) {
-    if (direction.isHorizontal == directionNotifier.value.isHorizontal) {
+  void changeDirection(Direction newDirection) {
+    if (!direction.isConsumed) {
       return;
     }
-    if (direction.isVertical == directionNotifier.value.isVertical) {
+
+    if (newDirection.isHorizontal == direction.direction.isHorizontal) {
       return;
     }
-    directionNotifier.value = direction;
+    if (newDirection.isVertical == direction.direction.isVertical) {
+      return;
+    }
+    directionNotifier.value = ConsumableDirection(newDirection);
   }
 
   void reset() {
