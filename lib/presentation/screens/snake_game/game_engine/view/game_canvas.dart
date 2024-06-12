@@ -59,6 +59,7 @@ class GameCanvas extends StatelessWidget {
                                   child: PixelTile(
                                     size: pixelSize,
                                     litWithColor: p.color,
+                                    shape: s.shape,
                                   ),
                                 );
                               }
@@ -69,6 +70,7 @@ class GameCanvas extends StatelessWidget {
                                 child: PixelTile(
                                   size: pixelSize,
                                   litWithColor: p.color,
+                                  shape: s.shape,
                                 ),
                               );
                             }).toList(),

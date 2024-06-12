@@ -1,0 +1,4 @@
+enum PixelShape {
+  square,
+  circle,
+}

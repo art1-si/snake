@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel_shape.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 
 class PixelTile extends StatelessWidget {
   const PixelTile({
     super.key,
     required this.size,
+    this.shape = PixelShape.square,
     this.litWithColor,
   });
 
   final double size;
   final Color? litWithColor;
+  final PixelShape shape;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +25,8 @@ class PixelTile extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               color: litWithColor,
-              borderRadius: BorderRadius.circular(2),
+              borderRadius:
+                  shape == PixelShape.circle ? BorderRadius.circular(size / 2) : BorderRadius.circular(size / 10),
               border: Border.all(
                 color: AppColors.primary.withOpacity(0.3),
                 width: 1,

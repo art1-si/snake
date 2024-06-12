@@ -3,14 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/movement_behaviour.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel.dart';
 import 'package:snake/presentation/screens/snake_game/direction_controls/direction_control_cluster.dart';
+import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel_shape.dart';
 
 sealed class Sprite {
   Sprite({
     required List<Pixel> pixels,
+    this.shape = PixelShape.square,
   })  : pixelsNotifier = ValueNotifier(pixels),
         _initialPixels = pixels;
 
   final List<Pixel> _initialPixels;
+
+  final PixelShape shape;
 
   final ValueNotifier<List<Pixel>> pixelsNotifier;
 
@@ -28,11 +32,11 @@ sealed class Sprite {
 }
 
 class UnmovableSprite extends Sprite {
-  UnmovableSprite({required super.pixels});
+  UnmovableSprite({required super.pixels, super.shape});
 }
 
 sealed class MovableSprite extends Sprite {
-  MovableSprite({required super.pixels, required this.movementBehaviour});
+  MovableSprite({required super.pixels, required this.movementBehaviour, super.shape});
 
   final MovementBehaviour movementBehaviour;
 
@@ -70,9 +74,9 @@ sealed class MovableSprite extends Sprite {
 }
 
 class OnTickMovableSprite extends MovableSprite {
-  OnTickMovableSprite({required super.pixels, required super.movementBehaviour});
+  OnTickMovableSprite({required super.pixels, required super.movementBehaviour, super.shape});
 }
 
 class OnControlMovableSprite extends MovableSprite {
-  OnControlMovableSprite({required super.pixels, required super.movementBehaviour});
+  OnControlMovableSprite({required super.pixels, required super.movementBehaviour, super.shape});
 }
