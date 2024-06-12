@@ -18,16 +18,14 @@ class AppleSprite extends UnmovableSprite {
     required CanvasPixelDensity pixelDensity,
     required List<Pixel> unavailablePixelOffsets,
   }) {
-    final density = pixelDensity.pixelDensity;
-    final random = Random();
-    final randomX = random.nextInt(density);
-    final randomY = random.nextInt(density);
-
     return AppleSprite(
       pixelDensity: pixelDensity,
       pixels: [
         Pixel(
-          offset: PixelOffset(x: randomX, y: randomY),
+          offset: _generateRandomAvailablePixelOffset(
+            unavailablePixelOffsets: unavailablePixelOffsets,
+            pixelDensity: pixelDensity,
+          ),
           color: AppColors.primary,
         ),
       ],
@@ -38,17 +36,36 @@ class AppleSprite extends UnmovableSprite {
   void respawn({
     required List<Pixel> unavailablePixelOffsets,
   }) {
+    pixelsNotifier.value = [
+      Pixel(
+        offset: _generateRandomAvailablePixelOffset(
+          unavailablePixelOffsets: unavailablePixelOffsets,
+          pixelDensity: pixelDensity,
+        ),
+        color: AppColors.primary,
+      ),
+    ];
+  }
+
+  static PixelOffset _generateRandomAvailablePixelOffset({
+    required CanvasPixelDensity pixelDensity,
+    required List<Pixel> unavailablePixelOffsets,
+  }) {
+    PixelOffset? randomOffset;
+    do {
+      randomOffset = randomOffsetGenerator(pixelDensity: pixelDensity);
+    } while (unavailablePixelOffsets.any((element) => element.offset == randomOffset));
+
+    return randomOffset;
+  }
+
+  static PixelOffset randomOffsetGenerator({required CanvasPixelDensity pixelDensity}) {
     final density = pixelDensity.pixelDensity;
     final random = Random();
 
     final randomX = random.nextInt(density);
     final randomY = random.nextInt(density);
 
-    pixelsNotifier.value = [
-      Pixel(
-        offset: PixelOffset(x: randomX, y: randomY),
-        color: AppColors.primary,
-      ),
-    ];
+    return PixelOffset(x: randomX, y: randomY);
   }
 }
