@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:snake/presentation/screens/snake_game/difficulty_level/bloc/difficulty_level_selector_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:snake/presentation/shared/difficulty_level/bloc/difficulty_level_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
@@ -37,10 +38,22 @@ class _SneakGameScreenState extends State<SneakGameScreen> {
       gameplayController: gameplayController,
       child: Scaffold(
         backgroundColor: AppColors.background,
+        appBar: AppBar(
+          backgroundColor: AppColors.background,
+          leading: IconButton(
+            onPressed: () {
+              context.pop();
+            },
+            icon: const Icon(
+              Icons.arrow_back,
+              color: AppColors.onBackground,
+            ),
+          ),
+          centerTitle: true,
+          title: StyledText.heading2('Snake Game'),
+        ),
         body: Column(
           children: [
-            const SizedBox(height: 64),
-            StyledText.heading1('Snake Game'),
             const SizedBox(height: 16),
             const ScoreDisplay(),
             Center(
@@ -51,7 +64,7 @@ class _SneakGameScreenState extends State<SneakGameScreen> {
             Expanded(
               child: Center(
                 child: SnakeGame(
-                  difficultyLevel: DifficultyLevelSelectorState.easy().difficultyLevel,
+                  difficultyLevel: DifficultyLevelState.easy().difficultyLevel,
                   directionController: directionController,
                   gameplayController: gameplayController,
                   onAppleEaten: () {

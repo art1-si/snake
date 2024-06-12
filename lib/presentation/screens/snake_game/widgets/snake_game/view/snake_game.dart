@@ -1,6 +1,6 @@
 import 'dart:ui';
 
-import 'package:snake/presentation/screens/snake_game/difficulty_level/model/difficulty_level.dart';
+import 'package:snake/presentation/shared/difficulty_level/model/difficulty_level.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/sprite.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/view/game_widget.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/models/apple_sprite.dart';

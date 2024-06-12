@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:snake/presentation/navigation/navigation_route.dart';
 import 'package:snake/presentation/shared/buttons/primary_button.dart';
 import 'package:snake/presentation/shared/buttons/secondary_button.dart';
+import 'package:snake/presentation/shared/difficulty_level/view/difficulty_level_selector.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
 
@@ -40,11 +41,13 @@ class HomeScreen extends StatelessWidget {
                   'SNAKE GAME',
                 ),
                 const SizedBox(height: 64),
+                const DifficultyLevelSelector(),
+                const SizedBox(height: 16),
                 PrimaryButton(
                   text: 'START GAME',
                   icon: Icons.play_circle_fill_sharp,
                   onPressed: () {
-                    context.goNamed(NavigationRoute.snakeGame.key);
+                    context.pushNamed(NavigationRoute.snakeGame.key);
                   },
                 ),
                 const SizedBox(height: 16),
