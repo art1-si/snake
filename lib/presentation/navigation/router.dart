@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snake/presentation/navigation/navigation_route.dart';
 import 'package:snake/presentation/screens/home/home_screen.dart';
-import 'package:snake/presentation/screens/leaderboard/leaderboard_screen.dart';
-import 'package:snake/presentation/screens/settings/settings_scree.dart';
 import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/snake_game_screen.dart';
 
 class AppRouter {
@@ -37,8 +35,6 @@ class AppRouter {
   Widget screenBuilder(BuildContext context, GoRouterState state, NavigationRoute route) {
     return switch (route) {
       NavigationRoute.home => const HomeScreen(),
-      NavigationRoute.settings => const SettingsScreen(),
-      NavigationRoute.leaderboard => const LeaderboardScreen(),
       NavigationRoute.snakeGame => SneakGameScreen.create(),
     };
   }

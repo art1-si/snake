@@ -1,7 +1,5 @@
 enum NavigationRoute {
   home(path: '/home', key: 'home'),
-  settings(path: '/settings', key: 'settings'),
-  leaderboard(path: '/dashboard', key: 'dashboard'),
   snakeGame(path: '/snakeGame', key: 'snakeGame');
 
   const NavigationRoute({
