@@ -43,6 +43,7 @@ class _GameWidgetState extends State<GameWidget> {
   @override
   void dispose() {
     widget.gameplayController.removeListener(gameplayControllerListener);
+    widget.gameplayController.dispose();
     super.dispose();
   }
 
