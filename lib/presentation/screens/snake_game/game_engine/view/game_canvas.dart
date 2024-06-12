@@ -12,9 +12,11 @@ class GameCanvas extends StatelessWidget {
     super.key,
     required this.sprite,
     required this.pixelDensity,
+    required this.animationDuration,
   });
   final List<Sprite> sprite;
   final CanvasPixelDensity pixelDensity;
+  final Duration animationDuration;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +51,8 @@ class GameCanvas extends StatelessWidget {
                         builder: (context, value, child) {
                           return Stack(
                             children: value.map((p) {
-                              return Positioned(
+                              return AnimatedPositioned(
+                                duration: animationDuration,
                                 left: p.offset.x * pixelSize,
                                 top: p.offset.y * pixelSize,
                                 child: PixelTile(

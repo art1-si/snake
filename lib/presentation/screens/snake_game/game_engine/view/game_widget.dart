@@ -142,6 +142,9 @@ class _GameWidgetState extends State<GameWidget> {
     return GameCanvas(
       sprite: _sprites,
       pixelDensity: widget.pixelDensity,
+      animationDuration: widget.gameplayController.tickerSpeed.inMilliseconds > 250
+          ? const Duration(milliseconds: 250)
+          : widget.gameplayController.tickerSpeed,
     );
   }
 }
