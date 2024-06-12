@@ -40,6 +40,7 @@ class AppleSprite extends UnmovableSprite {
   }) {
     final density = pixelDensity.pixelDensity;
     final random = Random();
+
     final randomX = random.nextInt(density);
     final randomY = random.nextInt(density);
 

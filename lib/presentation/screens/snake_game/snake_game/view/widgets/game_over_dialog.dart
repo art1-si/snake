@@ -11,6 +11,7 @@ class GameOverDialog extends StatelessWidget {
   static void show(BuildContext context, {Key? key, required int score, required VoidCallback onRestart}) {
     showDialog(
       context: context,
+      barrierDismissible: false,
       builder: (context) {
         return GameOverDialog._(
           key: key,
