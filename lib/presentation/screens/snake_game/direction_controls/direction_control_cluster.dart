@@ -33,9 +33,9 @@ class DirectionControlCluster extends StatelessWidget {
                     Align(
                       alignment: Alignment.topCenter,
                       child: DirectionControlButton(
-                        disabled: value.isVertical,
                         direction: Direction.up,
                         onPressed: () {
+                          if (value.isVertical) return;
                           directionController.changeDirection(Direction.up);
                         },
                       ),
@@ -43,9 +43,9 @@ class DirectionControlCluster extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: DirectionControlButton(
-                        disabled: value.isHorizontal,
                         direction: Direction.left,
                         onPressed: () {
+                          if (value.isHorizontal) return;
                           directionController.changeDirection(Direction.left);
                         },
                       ),
@@ -53,9 +53,9 @@ class DirectionControlCluster extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerRight,
                       child: DirectionControlButton(
-                        disabled: value.isHorizontal,
                         direction: Direction.right,
                         onPressed: () {
+                          if (value.isHorizontal) return;
                           directionController.changeDirection(Direction.right);
                         },
                       ),
@@ -63,9 +63,9 @@ class DirectionControlCluster extends StatelessWidget {
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: DirectionControlButton(
-                        disabled: value.isVertical,
                         direction: Direction.down,
                         onPressed: () {
+                          if (value.isVertical) return;
                           directionController.changeDirection(Direction.down);
                         },
                       ),
@@ -86,22 +86,20 @@ class DirectionControlButton extends StatelessWidget {
     super.key,
     required this.direction,
     required this.onPressed,
-    required this.disabled,
   });
 
   final Direction direction;
   final VoidCallback onPressed;
-  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
     return IconButton(
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(disabled ? Colors.white38 : Colors.white),
+        backgroundColor: MaterialStateProperty.all(Colors.white),
         padding: MaterialStateProperty.all(const EdgeInsets.all(24)),
         shape: MaterialStateProperty.all(const CircleBorder()),
       ),
-      onPressed: disabled ? null : onPressed,
+      onPressed: onPressed,
       icon: Icon(
         switch (direction) {
           Direction.up => Icons.arrow_upward,
