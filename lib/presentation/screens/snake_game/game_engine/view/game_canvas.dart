@@ -51,8 +51,19 @@ class GameCanvas extends StatelessWidget {
                         builder: (context, value, child) {
                           return Stack(
                             children: value.map((p) {
-                              return AnimatedPositioned(
-                                duration: animationDuration,
+                              if (s is MovableSprite) {
+                                return AnimatedPositioned(
+                                  duration: animationDuration,
+                                  left: p.offset.x * pixelSize,
+                                  top: p.offset.y * pixelSize,
+                                  child: PixelTile(
+                                    size: pixelSize,
+                                    litWithColor: p.color,
+                                  ),
+                                );
+                              }
+
+                              return Positioned(
                                 left: p.offset.x * pixelSize,
                                 top: p.offset.y * pixelSize,
                                 child: PixelTile(
