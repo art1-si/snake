@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
 import 'package:snake/presentation/screens/snake_game/snake_game/bloc/gameplay_bloc/gameplay_bloc.dart';
-import 'package:snake/presentation/theme/styled_text.dart';
+import 'package:snake/presentation/screens/snake_game/snake_game/view/widgets/game_over_dialog.dart';
 
 class GameplayControlOverlay extends StatefulWidget {
   const GameplayControlOverlay({
@@ -24,23 +24,9 @@ class _GameplayControlOverlayState extends State<GameplayControlOverlay> {
       child: BlocConsumer<GameplayBloc, GameplayState>(
         listener: (context, state) {
           if (state is GameOver) {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: const StyledText('Game Over'),
-                  content: const StyledText('You lost!'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text('Close'),
-                    ),
-                  ],
-                );
-              },
-            );
+            GameOverDialog.show(context, score: state.score, onRestart: () {
+              widget.gameplayController.startGame();
+            });
           }
         },
         builder: (context, state) {
