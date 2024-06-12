@@ -1,5 +1,5 @@
 enum CanvasPixelDensity {
-  low(pixelDensity: 24),
+  low(pixelDensity: 12),
   medium(pixelDensity: 36),
   high(pixelDensity: 48);
 
