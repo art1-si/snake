@@ -2,7 +2,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/movement_behaviour.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/direction_controls/direction_control_cluster.dart';
+import 'package:snake/presentation/screens/snake_game/direction_controls/direction_control_cluster.dart';
 
 sealed class Sprite {
   Sprite({

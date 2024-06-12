@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/snake_game/bloc/gameplay_bloc/gameplay_bloc.dart';
+import 'package:snake/presentation/screens/snake_game/snake_game/bloc/gameplay_bloc/gameplay_bloc.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
 
 class GameplayControlOverlay extends StatefulWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:snake/presentation/navigation/navigation_route.dart';
 import 'package:snake/presentation/screens/home/home_screen.dart';
-import 'package:snake/presentation/screens/snake_game/widgets/snake_game/view/snake_game_screen.dart';
+import 'package:snake/presentation/screens/snake_game/snake_game/view/snake_game_screen.dart';
 
 class AppRouter {
   AppRouter._();
