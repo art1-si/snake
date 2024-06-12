@@ -35,6 +35,14 @@ class _SneakGameScreenState extends State<SneakGameScreen> {
   final directionController = DirectionController();
   late final gameplayController =
       GameplayController(tickerSpeed: context.read<DifficultyLevelBloc>().state.difficultyLevel.tickerSpeed);
+
+  @override
+  void dispose() {
+    directionController.dispose();
+    gameplayController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final difficultyLevel = context.watch<DifficultyLevelBloc>().state;

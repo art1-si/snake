@@ -25,4 +25,8 @@ class DirectionController {
   void reset() {
     directionNotifier.value = _initialDirection;
   }
+
+  void dispose() {
+    directionNotifier.dispose();
+  }
 }
