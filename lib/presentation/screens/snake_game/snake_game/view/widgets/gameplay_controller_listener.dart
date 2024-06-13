@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
-import 'package:snake/presentation/screens/snake_game/game_engine/models/game_play_event.dart';
+import 'package:snake/presentation/screens/snake_game/game_engine/models/gameplay_event.dart';
 import 'package:snake/presentation/screens/snake_game/snake_game/bloc/gameplay_bloc/gameplay_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

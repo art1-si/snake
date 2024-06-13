@@ -1,6 +1,6 @@
 # Snake Game
 
-A Snake Game made in Flutter.
+This repository contains a Snake game built with Flutter. The engine includes various components to manage the game state, handle user inputs, render the game canvas, and control the movement and behavior of sprites.
 
 ## Getting Started
 
@@ -28,3 +28,16 @@ If you want to use Terminal, run this command:
 ```shell
 make run
 ```
+
+## Core Concepts
+
+### Navigation
+
+For navigation app using the `GoRouter` [package](https://pub.dev/packages/go_router).
+All destinations are defined in the `NavigationRoute`.
+
+### State Management
+
+For the global state app is using BloC [package](https://pub.dev/packages/bloc). Smooth and easy to use solution.
+
+But for local, or closed components, like game engine it's using flutter provided state management solution. This prevents unnecessary dependence on other packages.

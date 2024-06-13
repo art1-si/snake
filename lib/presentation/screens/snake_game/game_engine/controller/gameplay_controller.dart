@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:snake/presentation/screens/snake_game/game_engine/models/game_play_event.dart';
+import 'package:snake/presentation/screens/snake_game/game_engine/models/gameplay_event.dart';
 
 /// Controller class for managing gameplay events and state.
 class GameplayController with ListenableEvent<GameplayEvents> {
