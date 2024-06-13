@@ -29,6 +29,55 @@ If you want to use Terminal, run this command:
 make run
 ```
 
+## Code Structure
+
+The project structure is organized as follows:
+
+### Layers
+
+```css
+lib/
+    ├── presentation/
+    ├── tools/
+    ├── firebase_options.dart
+    ├── main.dart
+    ├── snake_game_app.dart
+```
+
+* `presentation/`: Directory (layer) containing all the code related to the User interface.
+* `tools/`: Contains tools like logger.
+* `firebase_options.dart`: Contains required information for firebase.
+* `main.dart`: Main file of the flutter project.
+* `snake_game_app.dart`: Main widget of this flutter project.
+
+### Presentation
+
+```css
+lib/
+    ├── navigation/
+    ├── screens/
+    ├── shared/
+    ├── theme/
+```
+
+* `navigation/`: Contains everything related to navigation.
+* `screens/`: Contains all screens within the app.
+* `shared`: Contains all widget and components that are shared between different screens.
+* `theme`: Contains properties for theming.
+
+### Feature
+
+```css
+feature/
+    ├── controller/
+    ├── models/
+    ├── view/
+```
+
+* `controller/`: Contains controllers for managing feature state (It can be also called `Bloc`).
+* `models/`: Contains data models needed for that feature.
+* `view/`: Contains widgets for rendering the feature.
+
 ## Core Concepts
 
 ### Navigation
