@@ -6,7 +6,7 @@ import 'package:snake/presentation/screens/snake_game/snake_game/extension/diffi
 import 'package:snake/presentation/shared/difficulty_level/bloc/difficulty_level_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
-import 'package:snake/presentation/screens/snake_game/direction_controls/direction_control_cluster.dart';
+import 'package:snake/presentation/screens/snake_game/snake_game/view/widgets/direction_controls/direction_control_cluster.dart';
 import 'package:snake/presentation/screens/snake_game/snake_game/bloc/gameplay_bloc/gameplay_bloc.dart';
 import 'package:snake/presentation/screens/snake_game/snake_game/view/widgets/gameplay_controller_listener.dart';
 import 'package:snake/presentation/screens/snake_game/snake_game/view/snake_game.dart';

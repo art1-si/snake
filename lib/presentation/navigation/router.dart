@@ -4,6 +4,10 @@ import 'package:snake/presentation/navigation/navigation_route.dart';
 import 'package:snake/presentation/screens/home/home_screen.dart';
 import 'package:snake/presentation/screens/snake_game/snake_game/view/snake_game_screen.dart';
 
+/// The App Router class for the App.
+///
+/// This class is responsible for setting up the App's navigation.
+/// It uses the [GoRouter] package to handle navigation.
 class AppRouter {
   AppRouter._();
 

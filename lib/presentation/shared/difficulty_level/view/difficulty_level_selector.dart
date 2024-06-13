@@ -7,6 +7,7 @@ import 'package:snake/presentation/shared/select_button_row/view/select_button_r
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
 
+/// A widget that allows the user to select a difficulty level for the snake game.
 class DifficultyLevelSelector extends StatelessWidget {
   const DifficultyLevelSelector({super.key});
 

@@ -3,6 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/direction.dart';
 
+/// Group of buttons that allow the user to control the direction of the sprite.
+///
+/// It also listens to the keyboard events to change the direction.
 class DirectionControlCluster extends StatefulWidget {
   const DirectionControlCluster({super.key, required this.directionController});
 

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
 
+/// A generic primary button.
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton({
     super.key,

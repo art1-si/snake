@@ -6,6 +6,7 @@ import 'package:snake/presentation/shared/difficulty_level/view/difficulty_level
 import 'package:snake/presentation/theme/app_colors.dart';
 import 'package:snake/presentation/theme/styled_text.dart';
 
+/// The home screen of the app.
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 

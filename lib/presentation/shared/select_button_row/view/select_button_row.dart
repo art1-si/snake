@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/shared/select_button_row/model/selectable_item.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 
+/// A row of buttons that can be used to select an item from a list of items.
 class SelectButtonRow<ItemT> extends StatefulWidget {
   const SelectButtonRow({super.key, required this.value, required this.items, required this.onChanged});
 

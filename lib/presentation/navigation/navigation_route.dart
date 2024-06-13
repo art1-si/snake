@@ -1,3 +1,6 @@
+/// Enum to define all the routes in the app.
+///
+/// It contains the path of the route and a key identifier.
 enum NavigationRoute {
   home(path: '/home', key: 'home'),
   snakeGame(path: '/snakeGame', key: 'snakeGame');

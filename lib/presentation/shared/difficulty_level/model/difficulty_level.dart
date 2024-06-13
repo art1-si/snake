@@ -1,5 +1,6 @@
 import 'package:snake/presentation/screens/snake_game/game_engine/models/canvas_pixel_density.dart';
 
+/// Enum representing the difficulty level of the game.
 enum DifficultyLevel {
   easy,
   medium,
