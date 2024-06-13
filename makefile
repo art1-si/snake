@@ -20,3 +20,7 @@ encrypt: ## Encrypts the secrets
 
 decrypt: ## Decrypts the secrets
 	./security/vault.sh decrypt
+
+deploy-web: ## Deploys the web app
+	flutter build web
+	firebase deploy --only hosting
