@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/gameplay_controller.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/canvas_pixel_density.dart';
+import 'package:snake/presentation/screens/snake_game/game_engine/models/game_play_event.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/view/game_canvas.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/sprite.dart';
 
