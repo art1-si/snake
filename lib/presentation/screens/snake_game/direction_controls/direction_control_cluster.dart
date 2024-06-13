@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/controller/direction_controller.dart';
-
-enum Direction {
-  up,
-  down,
-  left,
-  right;
-
-  bool get isVertical => this == Direction.up || this == Direction.down;
-  bool get isHorizontal => this == Direction.left || this == Direction.right;
-}
+import 'package:snake/presentation/screens/snake_game/game_engine/models/direction.dart';
 
 class DirectionControlCluster extends StatefulWidget {
   const DirectionControlCluster({super.key, required this.directionController});

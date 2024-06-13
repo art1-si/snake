@@ -7,6 +7,9 @@ import 'package:snake/presentation/screens/snake_game/game_engine/view/pixel_til
 
 import 'package:snake/presentation/theme/app_colors.dart';
 
+/// Widget representing the game canvas.
+///
+/// The canvas is a grid of pixels where the game sprites are drawn.
 class GameCanvas extends StatelessWidget {
   const GameCanvas({
     super.key,

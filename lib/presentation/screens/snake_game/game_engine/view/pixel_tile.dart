@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/pixel_shape.dart';
 import 'package:snake/presentation/theme/app_colors.dart';
 
+/// Widget representing a tile on the game canvas.
 class PixelTile extends StatelessWidget {
   const PixelTile({
     super.key,

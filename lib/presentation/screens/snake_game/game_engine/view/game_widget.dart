@@ -6,6 +6,9 @@ import 'package:snake/presentation/screens/snake_game/game_engine/models/game_pl
 import 'package:snake/presentation/screens/snake_game/game_engine/view/game_canvas.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/models/sprite.dart';
 
+/// Abstract class representing a game widget.
+/// This widget is a main game engine and it's responsible
+/// for handling game events and collisions.
 abstract class GameWidget extends StatefulWidget {
   const GameWidget({
     super.key,
@@ -20,12 +23,16 @@ abstract class GameWidget extends StatefulWidget {
 
   final GameplayController gameplayController;
 
+  /// Called when a collision occurs between two sprites.
   void onCollisionWithOtherSprite(Sprite sprite1, Sprite sprite2);
 
+  /// Called when a collision occurs between a sprite and the wall.
   void onCollisionWithWall(Sprite sprite);
 
+  /// Called when a sprite collides with itself.
   void onCollisionWithItself(Sprite sprite);
 
+  /// Builds the list of sprites in the game.
   List<Sprite> spriteBuilder();
 
   @override
@@ -48,6 +55,7 @@ class _GameWidgetState extends State<GameWidget> {
     super.dispose();
   }
 
+  /// Listener for gameplay controller events.
   void gameplayControllerListener(GameplayEvents event) {
     if (event is TickerEvent) {
       onTick();
@@ -57,6 +65,7 @@ class _GameWidgetState extends State<GameWidget> {
     }
   }
 
+  /// Resets the gameplay state.
   void resetGameplay() {
     widget.directionController.reset();
     for (var element in _sprites) {
@@ -64,6 +73,7 @@ class _GameWidgetState extends State<GameWidget> {
     }
   }
 
+  /// Called on each tick to update the game state.
   void onTick() {
     for (var element in _sprites) {
       if (element is MovableSprite) {
@@ -74,6 +84,7 @@ class _GameWidgetState extends State<GameWidget> {
     checkForCollision();
   }
 
+  /// Checks for collisions between sprites and other objects.
   void checkForCollision() {
     final collidedWithWallSprite = _collidedWithWall();
     if (collidedWithWallSprite != null) {
@@ -94,6 +105,8 @@ class _GameWidgetState extends State<GameWidget> {
     }
   }
 
+  /// Checks if any sprite has collided with itself.
+  /// If so, returns the sprite that collided with itself.
   Sprite? _collidedWithItself() {
     for (var sprite in _sprites) {
       for (var pixel in sprite.pixels) {
@@ -105,6 +118,8 @@ class _GameWidgetState extends State<GameWidget> {
     return null;
   }
 
+  /// Checks if any sprite has collided with another sprite.
+  /// If so, returns the pair of sprites that collided.
   (Sprite sprite1, Sprite sprite2)? _collidedWithOtherSprite() {
     for (var sprite1 in _sprites) {
       for (var sprite2 in _sprites) {
@@ -124,6 +139,8 @@ class _GameWidgetState extends State<GameWidget> {
     return null;
   }
 
+  /// Checks if any sprite has collided with the wall.
+  /// If so, returns the sprite that collided with the wall.
   Sprite? _collidedWithWall() {
     for (var sprite in _sprites) {
       for (var pixel in sprite.pixels) {

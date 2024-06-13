@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:snake/presentation/screens/snake_game/game_engine/view/pixel_tile.dart';
 
+/// Widget representing a grid of pixels.
+///
+/// The grid is made up of [PixelTile] widgets.
 class CanvasGrid extends StatelessWidget {
   const CanvasGrid({
     super.key,
