@@ -18,6 +18,18 @@ class DirectionControlCluster extends StatefulWidget {
 class _DirectionControlClusterState extends State<DirectionControlCluster> {
   final FocusNode focusNode = FocusNode();
 
+  @override
+  void initState() {
+    focusNode.requestFocus();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    focusNode.dispose();
+    super.dispose();
+  }
+
   KeyEventResult onKeyEvent(FocusNode node, KeyEvent event) {
     if (event is KeyDownEvent) {
       switch (event.logicalKey) {
